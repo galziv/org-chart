@@ -74,7 +74,7 @@ export class OrgChart {
             onZoom: e => { }, // Callback for zoom & panning 
             onZoomEnd: e => { }, // Callback for zoom & panning end
             onNodeClick: (d) => d, // Callback for node click
-            onNodeMouseEnter: (d) => d, // Callback for node click
+            onNodeMouseEnter: (event, d) => d, // Callback for node click
             onExpandOrCollapse: (d) => d, // Callback for node expand or collapse
 
             /*
@@ -1042,7 +1042,7 @@ export class OrgChart {
                 }
                 console.log('event fired, no handlers')
             })
-            .on("mouseenter.node", (event, node) => attrs.onNodeMouseEnter(node))
+            .on("mouseenter.node", (event, node) => attrs.onNodeMouseEnter(event, node))
             //  Event handler to the expand button
             .on("keydown.node", (event, node) => {
                 const { data } = node;
