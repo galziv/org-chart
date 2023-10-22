@@ -1042,17 +1042,7 @@ export class OrgChart {
                 }
                 console.log('event fired, no handlers')
             })
-            .on("mouseenter.node", (event, node) => {
-                const { data } = node;
-                if ([...event.srcElement.classList].includes("node-button-foreign-object")) {
-                    return;
-                }
-                if ([...event.srcElement.classList].includes("paging-button-wrapper")) {
-                    this.loadPagingNodes(node);
-                    return;
-                }
-                attrs.onNodeMouseEnter(node);
-            })
+            .on("mouseenter.node", (event, node) => attrs.onNodeMouseEnter(node))
             //  Event handler to the expand button
             .on("keydown.node", (event, node) => {
                 const { data } = node;
